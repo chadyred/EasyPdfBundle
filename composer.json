@@ -1,5 +1,5 @@
 {
-    "name": "chadyred/fpdf-fpdi-draw-symfony2",
+    "name": "chadyred/fpdf-fpdi-symfony2",
     "type": "library",
     "description": "fpdf vendor for use with symfony2, based on toooni/fpdf",
     "keywords": [],
@@ -17,6 +17,6 @@
         "setasign/fpdi-fpdf": "1.5.4"
     },
     "autoload": {
-        "psr-4": {"lib\\": "lib/"}
+        "psr-4": {"lib\\draw": "lib/draw/"}
     }
 }
