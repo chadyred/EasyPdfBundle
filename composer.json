@@ -1,0 +1,22 @@
+{
+    "name": "chadyred/fpdf-fpdi-draw-symfony2",
+    "type": "library",
+    "description": "fpdf vendor for use with symfony2, based on toooni/fpdf",
+    "keywords": [],
+    "homepage": "http://github.com/chadyred",
+    "license": "BSD-3",
+    "version": "1.0",
+	"authors": [
+        {
+            "name": "Florian Cellier",
+            "email": "chadyred@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "setasign/fpdi-fpdf": "1.5.4"
+    },
+    "autoload": {
+        "psr-4": {"lib\\": "lib/"}
+    }
+}
