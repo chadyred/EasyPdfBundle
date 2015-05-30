@@ -1,3 +1,8 @@
+## Documentation
+
+ 1. [Installation](/Resources/doc/installation.md)
+ 2. [Usage](/Resources/doc/usage.md)
+
 ## What is FPDF?
 
 FPDF is a PHP class which allows to generate PDF files with pure PHP, that is to say without using the PDFlib library. F from FPDF stands for Free: you may use it for any kind of usage and modify it to suit your needs.
@@ -21,8 +26,3 @@ _FPDF requires no extension (except zlib to activate compression and GD for GIF 
 The FPDI class is an extension for FPDF allowing you to import existing PDF pages into FPDF. It extends FPDF_TPL which adds a kind of template feature to FPDF.
 
 FPDI transforms a PDF page into the same structure that is used by FPDF_TPL. The class offers all available methods as you already know from FPDF and extends it with some more methods.
-
-## Documentation
-
- 1. [Installation](/Resources/doc/installation.md)
- 2. [Usage](/Resources/doc/usage.md)
