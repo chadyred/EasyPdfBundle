@@ -15,3 +15,14 @@ FPDF has other advantages: high level functions. Here is a list of its main feat
 * Page compression
 
 _FPDF requires no extension (except zlib to activate compression and GD for GIF support). It works with PHP 4 and PHP 5 (the latest version requires at least PHP 4.3.10)._
+
+## What is FPDI?
+
+The FPDI class is an extension for FPDF allowing you to import existing PDF pages into FPDF. It extends FPDF_TPL which adds a kind of template feature to FPDF.
+
+FPDI transforms a PDF page into the same structure that is used by FPDF_TPL. The class offers all available methods as you already know from FPDF and extends it with some more methods.
+
+## Documentation
+
+ 1. [Installation](/Resources/doc/installation.md)
+ 2. [Usage](/Resources/doc/usage.md)
