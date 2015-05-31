@@ -20,9 +20,10 @@
         "psr-4": {"lib\\draw\\": "lib/draw/"}
     }
     {
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.*"
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.*"
+            }
         }
     }
 }
