@@ -17,6 +17,9 @@
         "setasign/fpdi-fpdf": "1.5.4"
     },
     "autoload": {
-        "psr-4": {"lib\\draw\\": "lib/draw/"}
+        "psr-4": {
+            "lib\\draw\\": "lib/draw/",
+            "lib\\cellfit\\": "lib/cellfit/"
+             }
     }
 }

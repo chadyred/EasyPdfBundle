@@ -4,10 +4,7 @@
 *
 */
 
-//L'inclusion se fait à partir de la racine, bien inclure cette bibliothèque
-require('fpdf/fpdf.php');
-
-class PDF_Draw extends FPDF {
+class PDF_Draw extends \FPDF {
 	// Sets line style
 	// Parameters:
 	// - style: Line style. Array with keys among the following:
