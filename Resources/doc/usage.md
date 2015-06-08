@@ -4,4 +4,4 @@ To resume, the bundle simply registers the fdpf class and the fpdi class. You ju
 
 **$pdf = new \FPDI();**
 
-You can see a full example [HERE](/Resources/doc/)
+You can see a full example [HERE](/Resources/doc/example/simple)
