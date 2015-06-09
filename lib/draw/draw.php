@@ -4,7 +4,7 @@
 *
 */
 
-class PDF_Draw extends \FPDF {
+class PDF_Draw extends \DecorateurPdf {
 	// Sets line style
 	// Parameters:
 	// - style: Line style. Array with keys among the following:

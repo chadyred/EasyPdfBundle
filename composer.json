@@ -19,7 +19,8 @@
     "autoload": {
             "classmap": [
             "lib/draw/draw.php",
-            "lib/cellfit/cellfit.php"
+            "lib/cellfit/cellfit.php",
+            "lib/DecoratorPdf.php"
         ]
     }
 }
