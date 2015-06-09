@@ -19,19 +19,19 @@ class PDF_Draw extends \DecoratorPdf {
 	function SetLineStyle($style) {
 		extract($style);
 		if (isset($width)) {
-			$width_prev = $this->LineWidth;
-			$this->SetLineWidth($width);
-			$this->LineWidth = $width_prev;
+			$width_prev = $this->pdf->LineWidth;
+			$this->pdf->SetLineWidth($width);
+			$this->pdf->LineWidth = $width_prev;
 		}
 		if (isset($cap)) {
 			$ca = array('butt' => 0, 'round'=> 1, 'square' => 2);
 			if (isset($ca[$cap]))
-				$this->_out($ca[$cap] . ' J');
+				$this->pdf->_out($ca[$cap] . ' J');
 		}
 		if (isset($join)) {
 			$ja = array('miter' => 0, 'round' => 1, 'bevel' => 2);
 			if (isset($ja[$join]))
-				$this->_out($ja[$join] . ' j');
+				$this->pdf->_out($ja[$join] . ' j');
 		}
 		if (isset($dash)) {
 			$dash_string = '';
@@ -46,11 +46,11 @@ class PDF_Draw extends \DecoratorPdf {
 			}
 			if (!isset($phase) || !$dash)
 				$phase = 0;
-			$this->_out(sprintf('[%s] %.2F d', $dash_string, $phase));
+			$this->pdf->_out(sprintf('[%s] %.2F d', $dash_string, $phase));
 		}
 		if (isset($color)) {
 			list($r, $g, $b) = $color;
-			$this->SetDrawColor($r, $g, $b);
+			$this->pdf->SetDrawColor($r, $g, $b);
 		}
 	}
 
@@ -62,7 +62,7 @@ class PDF_Draw extends \DecoratorPdf {
 	function Line($x1, $y1, $x2, $y2, $style = null) {
 		if ($style)
 			$this->SetLineStyle($style);
-		parent::Line($x1, $y1, $x2, $y2);
+		$this->pdf->Line($x1, $y1, $x2, $y2);
 	}
 
 	// Draws a rectangle
