@@ -1,6 +1,6 @@
 <?php
 
-class FPDF_CellFit extends \DecorateurPdf {
+class FPDF_CellFit extends \DecoratorPdf {
 
 	//Cell with horizontal scaling if text is too wide
 	function CellFit($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='', $scale=false, $force=true)
