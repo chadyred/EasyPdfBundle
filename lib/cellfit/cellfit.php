@@ -6,7 +6,7 @@ class FPDF_CellFit extends \DecoratorPdf {
 	function CellFit($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='', $scale=false, $force=true)
 	{
 		//Get string width
-		$str_width=$this->GetStringWidth($txt);
+		$str_width=$this->pdf->GetStringWidth($txt);
 
 		//Calculate ratio to fit cell
 		if($w==0)
