@@ -109,13 +109,13 @@ class PDF_Draw extends \DecoratorPdf {
 		}
 		if ($border_style) {
 			if (isset($border_style['L']) && $border_style['L'])
-				$this->Line($x, $y, $x, $y + $h, $border_style['L']);
+				$this->pdf->Line($x, $y, $x, $y + $h, $border_style['L']);
 			if (isset($border_style['T']) && $border_style['T'])
-				$this->Line($x, $y, $x + $w, $y, $border_style['T']);
+				$this->pdf->Line($x, $y, $x + $w, $y, $border_style['T']);
 			if (isset($border_style['R']) && $border_style['R'])
-				$this->Line($x + $w, $y, $x + $w, $y + $h, $border_style['R']);
+				$this->pdf->Line($x + $w, $y, $x + $w, $y + $h, $border_style['R']);
 			if (isset($border_style['B']) && $border_style['B'])
-				$this->Line($x, $y + $h, $x + $w, $y + $h, $border_style['B']);
+				$this->pdf->Line($x, $y + $h, $x + $w, $y + $h, $border_style['B']);
 		}
 	}
 
@@ -189,8 +189,8 @@ class PDF_Draw extends \DecoratorPdf {
 				$this->SetLineStyle($line_style);
 			if (!$ry)
 				$ry = $rx;
-			$rx *= $this->k;
-			$ry *= $this->k;
+			$rx *= $this->pdf->k;
+			$ry *= $this->pdf->k;
 			if ($nSeg < 2)
 				$nSeg = 2;
 
@@ -201,8 +201,8 @@ class PDF_Draw extends \DecoratorPdf {
 			$dt = $totalAngle/$nSeg;
 			$dtm = $dt/3;
 
-			$x0 *= $this->k;
-			$y0 = ($this->h - $y0) * $this->k;
+			$x0 *= $this->pdf->k;
+			$y0 = ($this->pdf->h - $y0) * $this->pdf->k;
 			if ($angle != 0) {
 				$a = -deg2rad((float) $angle);
 				$this->_out(sprintf('q %.2F %.2F %.2F %.2F %.2F %.2F cm', cos($a), -1 * sin($a), sin($a), cos($a), $x0, $y0));
@@ -215,7 +215,7 @@ class PDF_Draw extends \DecoratorPdf {
 			$b0 = $y0 + ($ry * sin($t1));
 			$c0 = -$rx * sin($t1);
 			$d0 = $ry * cos($t1);
-			$this->_Point($a0 / $this->k, $this->h - ($b0 / $this->k));
+			$this->_Point($a0 / $this->pdf->k, $this->pdf->h - ($b0 / $this->pdf->k));
 			for ($i = 1; $i <= $nSeg; $i++) {
 				// Draw this bit of the total curve
 				$t1 = ($i * $dt) + $astart;
@@ -223,12 +223,12 @@ class PDF_Draw extends \DecoratorPdf {
 				$b1 = $y0 + ($ry * sin($t1));
 				$c1 = -$rx * sin($t1);
 				$d1 = $ry * cos($t1);
-				$this->_Curve(($a0 + ($c0 * $dtm)) / $this->k,
-							$this->h - (($b0 + ($d0 * $dtm)) / $this->k),
-							($a1 - ($c1 * $dtm)) / $this->k,
-							$this->h - (($b1 - ($d1 * $dtm)) / $this->k),
-							$a1 / $this->k,
-							$this->h - ($b1 / $this->k));
+				$this->_Curve(($a0 + ($c0 * $dtm)) / $this->pdf->k,
+							$this->pdf->h - (($b0 + ($d0 * $dtm)) / $this->pdf->k),
+							($a1 - ($c1 * $dtm)) / $this->pdf->k,
+							$this->pdf->h - (($b1 - ($d1 * $dtm)) / $this->pdf->k),
+							$a1 / $this->pdf->k,
+							$this->pdf->h - ($b1 / $this->pdf->k));
 				$a0 = $a1;
 				$b0 = $b1;
 				$c0 = $c1;
@@ -298,7 +298,7 @@ class PDF_Draw extends \DecoratorPdf {
 				$p[($np * 2) + 1] = $p[1];
 				for ($i = 0; $i < $np; $i++)
 					if (!empty($line_style[$i]))
-						$this->Line($p[$i * 2], $p[($i * 2) + 1], $p[($i * 2) + 2], $p[($i * 2) + 3], $line_style[$i]);
+						$this->pdf->Line($p[$i * 2], $p[($i * 2) + 1], $p[($i * 2) + 2], $p[($i * 2) + 3], $line_style[$i]);
 			}
 
 		if ($draw) {
@@ -461,14 +461,14 @@ class PDF_Draw extends \DecoratorPdf {
 	// Parameters:
 	// - x, y: Point
 	function _Point($x, $y) {
-		$this->pdf->_out(sprintf('%.2F %.2F m', $x * $this->k, ($this->h - $y) * $this->k));
+		$this->pdf->_out(sprintf('%.2F %.2F m', $x * $this->pdf->k, ($this->pdf->h - $y) * $this->pdf->k));
 	}
 
 	// Draws a line from last draw point
 	// Parameters:
 	// - x, y: End point
 	function _Line($x, $y) {
-		$this->pdf->_out(sprintf('%.2F %.2F l', $x * $this->k, ($this->h - $y) * $this->k));
+		$this->pdf->_out(sprintf('%.2F %.2F l', $x * $this->pdf->k, ($this->pdf->h - $y) * $this->pdf->k));
 	}
 
 	// Draws a Bézier curve from last draw point
@@ -477,7 +477,7 @@ class PDF_Draw extends \DecoratorPdf {
 	// - x2, y2: Control point 2
 	// - x3, y3: End point
 	function _Curve($x1, $y1, $x2, $y2, $x3, $y3) {
-		$this->pdf->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c', $x1 * $this->k, ($this->h - $y1) * $this->k, $x2 * $this->k, ($this->h - $y2) * $this->k, $x3 * $this->k, ($this->h - $y3) * $this->k));
+		$this->pdf->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c', $x1 * $this->pdf->k, ($this->pdf->h - $y1) * $this->pdf->k, $x2 * $this->pdf->k, ($this->pdf->h - $y2) * $this->pdf->k, $x3 * $this->pdf->k, ($this->pdf->h - $y3) * $this->pdf->k));
 	}
 
 }
