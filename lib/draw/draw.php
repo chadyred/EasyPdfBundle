@@ -150,7 +150,7 @@ class PDF_Draw extends \DecoratorPdf {
 
 		$this->_Point($x0, $y0);
 		$this->_Curve($x1, $y1, $x2, $y2, $x3, $y3);
-		$this->_out($op);
+		$this->pdf->_out($op);
 	}
 
 	// Draws an ellipse
@@ -205,7 +205,7 @@ class PDF_Draw extends \DecoratorPdf {
 			$y0 = ($this->pdf->h - $y0) * $this->pdf->k;
 			if ($angle != 0) {
 				$a = -deg2rad((float) $angle);
-				$this->_out(sprintf('q %.2F %.2F %.2F %.2F %.2F %.2F cm', cos($a), -1 * sin($a), sin($a), cos($a), $x0, $y0));
+				$this->pdf->_out(sprintf('q %.2F %.2F %.2F %.2F %.2F %.2F cm', cos($a), -1 * sin($a), sin($a), cos($a), $x0, $y0));
 				$x0 = 0;
 				$y0 = 0;
 			}
@@ -234,9 +234,9 @@ class PDF_Draw extends \DecoratorPdf {
 				$c0 = $c1;
 				$d0 = $d1;
 			}
-			$this->_out($op);
+			$this->pdf->_out($op);
 			if ($angle !=0)
-				$this->_out('Q');
+				$this->pdf->_out('Q');
 		}
 	}
 
@@ -292,7 +292,7 @@ class PDF_Draw extends \DecoratorPdf {
 					for ($i = 2; $i < ($np * 2); $i = $i + 2)
 						$this->_Line($p[$i], $p[$i + 1]);
 					$this->_Line($p[0], $p[1]);
-					$this->_out($op);
+					$this->pdf->_out($op);
 				}
 				$p[$np * 2] = $p[0];
 				$p[($np * 2) + 1] = $p[1];
@@ -306,7 +306,7 @@ class PDF_Draw extends \DecoratorPdf {
 			for ($i = 2; $i < ($np * 2); $i = $i + 2)
 				$this->_Line($p[$i], $p[$i + 1]);
 			$this->_Line($p[0], $p[1]);
-			$this->_out($op);
+			$this->pdf->_out($op);
 		}
 	}
 
