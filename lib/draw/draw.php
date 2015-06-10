@@ -80,7 +80,7 @@ class PDF_Draw extends \DecoratorPdf {
 	function Rect($x, $y, $w, $h, $style = '', $border_style = null, $fill_color = null) {
 		if (!(false === strpos($style, 'F')) && $fill_color) {
 			list($r, $g, $b) = $fill_color;
-			$this->SetFillColor($r, $g, $b);
+			$this->pdf->SetFillColor($r, $g, $b);
 		}
 		switch ($style) {
 			case 'F':
@@ -131,7 +131,7 @@ class PDF_Draw extends \DecoratorPdf {
 	function Curve($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3, $style = '', $line_style = null, $fill_color = null) {
 		if (!(false === strpos($style, 'F')) && $fill_color) {
 			list($r, $g, $b) = $fill_color;
-			$this->SetFillColor($r, $g, $b);
+			$this->pdf->SetFillColor($r, $g, $b);
 		}
 		switch ($style) {
 			case 'F':
@@ -168,7 +168,7 @@ class PDF_Draw extends \DecoratorPdf {
 		if ($rx) {
 			if (!(false === strpos($style, 'F')) && $fill_color) {
 				list($r, $g, $b) = $fill_color;
-				$this->SetFillColor($r, $g, $b);
+				$this->pdf->SetFillColor($r, $g, $b);
 			}
 			switch ($style) {
 				case 'F':
@@ -266,7 +266,7 @@ class PDF_Draw extends \DecoratorPdf {
 		$np = count($p) / 2;
 		if (!(false === strpos($style, 'F')) && $fill_color) {
 			list($r, $g, $b) = $fill_color;
-			$this->SetFillColor($r, $g, $b);
+			$this->pdf->SetFillColor($r, $g, $b);
 		}
 		switch ($style) {
 			case 'F':
@@ -397,7 +397,7 @@ class PDF_Draw extends \DecoratorPdf {
 		else { // Rounded
 			if (!(false === strpos($style, 'F')) && $fill_color) {
 				list($red, $g, $b) = $fill_color;
-				$this->SetFillColor($red, $g, $b);
+				$this->pdf->SetFillColor($red, $g, $b);
 			}
 			switch ($style) {
 				case 'F':
@@ -451,7 +451,7 @@ class PDF_Draw extends \DecoratorPdf {
 				$this->_Line($x, $y);
 				$this->_Line($x + $r, $y);
 			}
-			$this->_out($op);
+			$this->pdf->_out($op);
 		}
 	}
 
@@ -461,14 +461,14 @@ class PDF_Draw extends \DecoratorPdf {
 	// Parameters:
 	// - x, y: Point
 	function _Point($x, $y) {
-		$this->_out(sprintf('%.2F %.2F m', $x * $this->k, ($this->h - $y) * $this->k));
+		$this->pdf->_out(sprintf('%.2F %.2F m', $x * $this->k, ($this->h - $y) * $this->k));
 	}
 
 	// Draws a line from last draw point
 	// Parameters:
 	// - x, y: End point
 	function _Line($x, $y) {
-		$this->_out(sprintf('%.2F %.2F l', $x * $this->k, ($this->h - $y) * $this->k));
+		$this->pdf->_out(sprintf('%.2F %.2F l', $x * $this->k, ($this->h - $y) * $this->k));
 	}
 
 	// Draws a Bézier curve from last draw point
@@ -477,7 +477,7 @@ class PDF_Draw extends \DecoratorPdf {
 	// - x2, y2: Control point 2
 	// - x3, y3: End point
 	function _Curve($x1, $y1, $x2, $y2, $x3, $y3) {
-		$this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c', $x1 * $this->k, ($this->h - $y1) * $this->k, $x2 * $this->k, ($this->h - $y2) * $this->k, $x3 * $this->k, ($this->h - $y3) * $this->k));
+		$this->pdf->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c', $x1 * $this->k, ($this->h - $y1) * $this->k, $x2 * $this->k, ($this->h - $y2) * $this->k, $x3 * $this->k, ($this->h - $y3) * $this->k));
 	}
 
 }
