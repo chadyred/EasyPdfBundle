@@ -1,7 +1,7 @@
 {
     "name": "chadyred/fpdf-fpdi-symfony2",
     "type": "library",
-    "description": "fpdf vendor for use with symfony2, based on toooni/fpdf",
+    "description": "fpdf vendor for use with symfony2. Do what you want with a blank PDF or with an existing PDF !",
     "keywords": [],
     "homepage": "http://github.com/chadyred",
     "license": "BSD-3",
