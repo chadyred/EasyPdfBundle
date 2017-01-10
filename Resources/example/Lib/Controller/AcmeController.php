@@ -1,20 +1,25 @@
 <?php
 
-namespace Acme\DemoBundle\Controller;
+namespace Acme\DemoBundle\Lib\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Acme\DemoBundle\Entity\Pdf;
+use Acme\DemoBundle\Lib\Entity\Pdf;
 
-class AcmeController extends Controller
+class AcmeController
 {
+	/**
+	 * Clasic bundle controller
+	 */
     public function indexAction()
     {
         $this->generationPdf();
 
-        
-        return $this->render('AcmeDemoBundle:Acme:index.html.twig');
+        // Go on your page after generate the pdf !
+        return $this->render('AcmeDemoBundle:Folder:view.html.twig');
     }
 
+    /**
+     * Main function that build and generate the pdf
+     */
     public function generationPdf()
 	{
 		// initiate FPDI
@@ -23,7 +28,7 @@ class AcmeController extends Controller
 		// add a page
 		$pdf->AddPage();
 
-		// set the source file
+		// set the source file (if you have on, FPDI allow that, even, it create a A4 for you ! )
 		$pdf->setSourceFile($pdf->getWebPath());
 
 		// import page 1
@@ -37,12 +42,15 @@ class AcmeController extends Controller
 		$pdf->SetTextColor(0, 0, 0);
 
 		$pdf->checkboxDemandeDt();
-		$pdf->checkboxDemandeDict();
-		$pdf->checkboxDemandeDtDictConjointe();
 		$pdf->destinataireDenomination("Zone destinataire>denomination");
 		$pdf->destinataireComplement("Zone destinataire>complement");
+		$pdf->numeroTelephone('0476898557');
 
+		// Use the barecode
+		$pdf->barecodeTest('I Want To Be A fred Today');
 
+		// Pdf is generated here !
 		$pdf->Output();
 	}
 }
+
