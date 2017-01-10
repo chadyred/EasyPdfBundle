@@ -1,7 +1,13 @@
+# Easy Pdf Bundle
+
+Thid bundle allow you to design your pdf easily.
+
 ## Documentation
 
  1. [Installation](/Resources/doc/installation.md)
  2. [Usage](/Resources/doc/usage.md)
+ 3. [Lib](/Resources/doc/lib.md)
+ 4. [Dev](/Resources/doc/dev.md)
 
 ## What is FPDF?
 
@@ -26,3 +32,8 @@ _FPDF requires no extension (except zlib to activate compression and GD for GIF 
 The FPDI class is an extension for FPDF allowing you to import existing PDF pages into FPDF. It extends FPDF_TPL which adds a kind of template feature to FPDF.
 
 FPDI transforms a PDF page into the same structure that is used by FPDF_TPL. The class offers all available methods as you already know from FPDF and extends it with some more methods.
+
+### Todo
+
+- Made a service to inject easily the pdf instance;
+- Show an exemple made by dependencies injection.

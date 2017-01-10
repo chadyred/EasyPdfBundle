@@ -4,7 +4,11 @@
 *
 */
 
-class PDF_Draw extends \DecoratorPdf {
+namespace lib\draw;
+
+use lib\DecoratorPdf;
+
+class PDF_Draw extends DecoratorPdf {
 	// Sets line style
 	// Parameters:
 	// - style: Line style. Array with keys among the following:
