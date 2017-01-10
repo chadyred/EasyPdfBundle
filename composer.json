@@ -1,7 +1,7 @@
 {
     "name": "chadyred/EasyPdfBundle",
     "type": "library",
-    "description": "fpdf vendor for use with symfony2, based on toooni/fpdf",
+    "description": "fpdf vendor for use with Symfony3",
     "keywords": ["fpdf", "fpdi", "pdf"],
     "homepage": "http://github.com/chadyred/EasyPdfBundle",
     "license": "BSD-3",
@@ -18,9 +18,10 @@
     },
     "autoload": {
             "psr-4": {
+                "Lib\\":,
                 "Lib\\Draw\\":"",
                 "Lib\\Cellfit\\":"",
-                "Lib\\Barcode\\":""
+                "Lib\\Barcode\\":"",
             }
     }
 }
