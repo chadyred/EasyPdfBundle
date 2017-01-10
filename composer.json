@@ -1,11 +1,11 @@
 {
-    "name": "chadyred/fpdf-fpdi-symfony2",
+    "name": "chadyred/EasyPdfBundle",
     "type": "library",
-    "description": "fpdf vendor for use with symfony2, based on toooni/fpdf",
-    "keywords": [],
-    "homepage": "http://github.com/chadyred",
+    "description": "fpdf vendor for use with Symfony3",
+    "keywords": ["fpdf", "fpdi", "pdf"],
+    "homepage": "http://github.com/chadyred/EasyPdfBundle",
     "license": "BSD-3",
-    "version": "1.0",
+    "version": "2.0",
 	"authors": [
         {
             "name": "chadyred",
@@ -14,13 +14,14 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "setasign/fpdi-fpdf": "1.5.4"
+        "setasign/fpdi-fpdf": "1.6.1"
     },
     "autoload": {
-            "classmap": [
-            "lib/draw/draw.php",
-            "lib/cellfit/cellfit.php",
-            "lib/DecoratorPdf.php"
-        ]
+            "psr-4": {
+                "Lib\\":"",
+                "Lib\\Draw\\":"",
+                "Lib\\Cellfit\\":"",
+                "Lib\\Barcode\\":""
+            }
     }
 }
