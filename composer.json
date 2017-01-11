@@ -1,10 +1,10 @@
 {
-    "name": "chadyred/EasyPdfBundle",
+    "name": "chadyred/easy-pdf-bundle",
     "type": "library",
     "description": "fpdf vendor for use with Symfony3",
     "keywords": ["fpdf", "fpdi", "pdf"],
     "homepage": "http://github.com/chadyred/EasyPdfBundle",
-    "license": "BSD-3",
+    "license": "MIT",
     "version": "2.0",
 	"authors": [
         {
@@ -18,10 +18,10 @@
     },
     "autoload": {
             "psr-4": {
-                "Lib\\":"",
-                "Lib\\Draw\\":"",
-                "Lib\\Cellfit\\":"",
-                "Lib\\Barcode\\":""
+                "Kark\\EasyPdfBundle\\Lib\\":"",
+                "Kark\\EasyPdfBundle\\Lib\\Barecode\\":"",
+                "Kark\\EasyPdfBundle\\Lib\\Cellfit\\":"",
+                "Kark\\EasyPdfBundle\\Lib\\Barecode\\":""
             }
     }
 }
