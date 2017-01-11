@@ -1,10 +1,6 @@
 <?php
 
 /*******************************************************************************
-* Script :  PDF_Code128
-* Version : 1.2
-* Date :    2016-01-31
-* Auteur :  Roland Gautier
 *
 * Version   Date        Detail
 * 1.2       2016-01-31  Compatibility with FPDF 1.8
@@ -39,9 +35,9 @@
 *   206     FNC1            FNC1
 *******************************************************************************/
 
-namespace lib\barecode;
+namespace Kark\EasyPdfBundle\Lib\Barecode;
 
-use lib\DecoratorPdf;
+use Kark\EasyPdfBundle\Lib\DecoratorPdf;
 
 class PDF_Code128 extends DecoratorPdf {
 
@@ -56,7 +52,7 @@ class PDF_Code128 extends DecoratorPdf {
     protected $JSwap = array("A"=>101, "B"=>100, "C"=>99);   // Caractères de changement de jeu
 
     //____________________________ Extension du constructeur _______________________
-    function __construct($pdf=NULL, $orientation='P', $unit='mm', $format='A4') {
+    public function __construct($pdf, $orientation='P', $unit='mm', $format='A4') {
 
         parent::__construct($pdf,$orientation,$unit,$format);
 
@@ -205,7 +201,7 @@ class PDF_Code128 extends DecoratorPdf {
     }
 
     //________________ Fonction encodage et dessin du code 128 _____________________
-    function Code128($x, $y, $code, $w, $h) {
+    public protected function Code128($x, $y, $code, $w, $h) {
         $Aguid = "";                                                                      // Création des guides de choix ABC
         $Bguid = "";
         $Cguid = "";
