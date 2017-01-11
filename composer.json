@@ -1,5 +1,5 @@
 {
-    "name": "chadyred/EasyPdfBundle",
+    "name": "chadyred/easy-pdf-bundle",
     "type": "library",
     "description": "fpdf vendor for use with Symfony3",
     "keywords": ["fpdf", "fpdi", "pdf"],
