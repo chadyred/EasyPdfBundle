@@ -1,8 +1,8 @@
 <?php
 
-namespace lib\cellfit;
+namespace Kark\EasyPdfBundle\Lib\Cellfit;
 
-use lib\DecoratorPdf;
+use Kark\EasyPdfBundle\Lib\DecoratorPdf;
 
 class FPDF_CellFit extends DecoratorPdf {
 
