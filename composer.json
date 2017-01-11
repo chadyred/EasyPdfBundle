@@ -18,10 +18,10 @@
     },
     "autoload": {
             "psr-4": {
-                "Kark\\EasyPdfBundle\\Lib":"",
-                "Kark\\EasyPdfBundle\\Lib\\Barecode":"",
-                "Kark\\EasyPdfBundle\\Lib\\Cellfit":"",
-                "Kark\\EasyPdfBundle\\Lib\\Barecode":""
+                "Kark\\EasyPdfBundle\\Lib\\":"",
+                "Kark\\EasyPdfBundle\\Lib\\Barecode\\":"",
+                "Kark\\EasyPdfBundle\\Lib\\Cellfit\\":"",
+                "Kark\\EasyPdfBundle\\Lib\\Barecode\\":""
             }
     }
 }
