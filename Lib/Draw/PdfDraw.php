@@ -20,7 +20,7 @@ class PdfDraw extends DecoratorPdf {
 	//                        (2,1) is 2 on, 1 off, 2 on, 1 off.. etc
 	//   . phase: Modifier of the dash pattern which is used to shift the point at which the pattern starts
 	//   . color: Draw color. Array with components (red, green, blue)
-	protected function SetLineStyle($style) {
+	public function SetLineStyle($style) {
 		extract($style);
 		if (isset($width)) {
 			$width_prev = $this->pdf->LineWidth;
@@ -63,7 +63,7 @@ class PdfDraw extends DecoratorPdf {
 	// - x1, y1: Start point
 	// - x2, y2: End point
 	// - style: Line style. Array like for SetLineStyle
-	protected function Line($x1, $y1, $x2, $y2, $style = null) {
+	public function Line($x1, $y1, $x2, $y2, $style = null) {
 		if ($style)
 			$this->SetLineStyle($style);
 		$this->pdf->Line($x1, $y1, $x2, $y2);
@@ -81,7 +81,7 @@ class PdfDraw extends DecoratorPdf {
 	//   . R: Line style of right border. null (no border) or array like for SetLineStyle
 	//   . B: Line style of bottom border. null (no border) or array like for SetLineStyle
 	// - fill_color: Fill color. Array with components (red, green, blue)
-	protected function Rect($x, $y, $w, $h, $style = '', $border_style = null, $fill_color = null) {
+	public function Rect($x, $y, $w, $h, $style = '', $border_style = null, $fill_color = null) {
 		if (!(false === strpos($style, 'F')) && $fill_color) {
 			list($r, $g, $b) = $fill_color;
 			$this->pdf->SetFillColor($r, $g, $b);
@@ -132,7 +132,7 @@ class PdfDraw extends DecoratorPdf {
 	// - style: Style of rectangule (draw and/or fill: D, F, DF, FD)
 	// - line_style: Line style for curve. Array like for SetLineStyle
 	// - fill_color: Fill color. Array with components (red, green, blue)
-	protected function Curve($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3, $style = '', $line_style = null, $fill_color = null) {
+	public function Curve($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3, $style = '', $line_style = null, $fill_color = null) {
 		if (!(false === strpos($style, 'F')) && $fill_color) {
 			list($r, $g, $b) = $fill_color;
 			$this->pdf->SetFillColor($r, $g, $b);
@@ -168,7 +168,7 @@ class PdfDraw extends DecoratorPdf {
 	// - line_style: Line style for ellipse. Array like for SetLineStyle
 	// - fill_color: Fill color. Array with components (red, green, blue)
 	// - nSeg: Ellipse is made up of nSeg Bézier curves
-	protected function Ellipse($x0, $y0, $rx, $ry = 0, $angle = 0, $astart = 0, $afinish = 360, $style = '', $line_style = null, $fill_color = null, $nSeg = 8) {
+	public function Ellipse($x0, $y0, $rx, $ry = 0, $angle = 0, $astart = 0, $afinish = 360, $style = '', $line_style = null, $fill_color = null, $nSeg = 8) {
 		if ($rx) {
 			if (!(false === strpos($style, 'F')) && $fill_color) {
 				list($r, $g, $b) = $fill_color;
@@ -254,7 +254,7 @@ class PdfDraw extends DecoratorPdf {
 	// - line_style: Line style for circle. Array like for SetLineStyle
 	// - fill_color: Fill color. Array with components (red, green, blue)
 	// - nSeg: Ellipse is made up of nSeg Bézier curves
-	protected function Circle($x0, $y0, $r, $astart = 0, $afinish = 360, $style = '', $line_style = null, $fill_color = null, $nSeg = 8) {
+	public function Circle($x0, $y0, $r, $astart = 0, $afinish = 360, $style = '', $line_style = null, $fill_color = null, $nSeg = 8) {
 		$this->Ellipse($x0, $y0, $r, 0, 0, $astart, $afinish, $style, $line_style, $fill_color, $nSeg);
 	}
 
@@ -266,7 +266,7 @@ class PdfDraw extends DecoratorPdf {
 	//   . all: Line style of all lines. Array like for SetLineStyle
 	//   . 0..np-1: Line style of each line. Item is 0 (not line) or like for SetLineStyle
 	// - fill_color: Fill color. Array with components (red, green, blue)
-	protected function Polygon($p, $style = '', $line_style = null, $fill_color = null) {
+	public function Polygon($p, $style = '', $line_style = null, $fill_color = null) {
 		$np = count($p) / 2;
 		if (!(false === strpos($style, 'F')) && $fill_color) {
 			list($r, $g, $b) = $fill_color;
@@ -329,7 +329,7 @@ class PdfDraw extends DecoratorPdf {
 	// - circle_style: Style of circumscribed circle (draw and/or fill) (D, F, DF, FD) (if draw)
 	// - circle_line_style: Line style for circumscribed circle. Array like for SetLineStyle (if draw)
 	// - circle_fill_color: Fill color for circumscribed circle. Array with components (red, green, blue) (if draw fill circle)
-	protected function RegularPolygon($x0, $y0, $r, $ns, $angle = 0, $circle = false, $style = '', $line_style = null, $fill_color = null, $circle_style = '', $circle_line_style = null, $circle_fill_color = null) {
+	public function RegularPolygon($x0, $y0, $r, $ns, $angle = 0, $circle = false, $style = '', $line_style = null, $fill_color = null, $circle_style = '', $circle_line_style = null, $circle_fill_color = null) {
 		if ($ns < 3)
 			$ns = 3;
 		if ($circle)
@@ -360,7 +360,7 @@ class PdfDraw extends DecoratorPdf {
 	// - circle_style: Style of circumscribed circle (draw and/or fill) (D, F, DF, FD) (if draw)
 	// - circle_line_style: Line style for circumscribed circle. Array like for SetLineStyle (if draw)
 	// - circle_fill_color: Fill color for circumscribed circle. Array with components (red, green, blue) (if draw fill circle)
-	protected function StarPolygon($x0, $y0, $r, $nv, $ng, $angle = 0, $circle = false, $style = '', $line_style = null, $fill_color = null, $circle_style = '', $circle_line_style = null, $circle_fill_color = null) {
+	public function StarPolygon($x0, $y0, $r, $nv, $ng, $angle = 0, $circle = false, $style = '', $line_style = null, $fill_color = null, $circle_style = '', $circle_line_style = null, $circle_fill_color = null) {
 		if ($nv < 2)
 			$nv = 2;
 		if ($circle)
@@ -395,7 +395,7 @@ class PdfDraw extends DecoratorPdf {
 	// - style: Style of rectangle (draw and/or fill) (D, F, DF, FD)
 	// - border_style: Border style of rectangle. Array like for SetLineStyle
 	// - fill_color: Fill color. Array with components (red, green, blue)
-	protected function RoundedRect($x, $y, $w, $h, $r, $round_corner = '1111', $style = '', $border_style = null, $fill_color = null) {
+	public function RoundedRect($x, $y, $w, $h, $r, $round_corner = '1111', $style = '', $border_style = null, $fill_color = null) {
 		if ('0000' == $round_corner) // Not rounded
 			$this->Rect($x, $y, $w, $h, $style, $border_style, $fill_color);
 		else { // Rounded

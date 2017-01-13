@@ -201,7 +201,7 @@ class PdfCode128 extends DecoratorPdf {
     }
 
     //________________ Fonction encodage et dessin du code 128 _____________________
-    public protected function Code128($x, $y, $code, $w, $h) {
+    public function Code128($x, $y, $code, $w, $h) {
         $Aguid = "";                                                                      // Création des guides de choix ABC
         $Bguid = "";
         $Cguid = "";
