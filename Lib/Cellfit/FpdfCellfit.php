@@ -4,10 +4,10 @@ namespace Kark\EasyPdfBundle\Lib\Cellfit;
 
 use Kark\EasyPdfBundle\Lib\DecoratorPdf;
 
-class FPDF_CellFit extends DecoratorPdf {
+class FpdfCellfit extends DecoratorPdf {
 
 	//Cell with horizontal scaling if text is too wide
-	function CellFit($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='', $scale=false, $force=true)
+	public function CellFit($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='', $scale=false, $force=true)
 	{
 		//Get string width
 		$str_width=$this->pdf->GetStringWidth($txt);
@@ -48,32 +48,32 @@ class FPDF_CellFit extends DecoratorPdf {
 	}
 
 	//Cell with horizontal scaling only if necessary
-	function CellFitScale($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
+	public function CellFitScale($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,true,false);
 	}
 
 	//Cell with horizontal scaling always
-	function CellFitScaleForce($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
+	public function CellFitScaleForce($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,true,true);
 	}
 
 	//Cell with character spacing only if necessary
-	function CellFitSpace($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
+	public function CellFitSpace($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,false,false);
 	}
 
 	//Cell with character spacing always
-	function CellFitSpaceForce($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
+	public function CellFitSpaceForce($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	{
 		//Same as calling CellFit directly
 		$this->CellFit($w,$h,$txt,$border,$ln,$align,$fill,$link,false,true);
 	}
 
 	//Patch to also work with CJK double-byte text
-	function MBGetStringLength($s)
+	public function MBGetStringLength($s)
 	{
 		if($this->CurrentFont['type']=='Type0')
 		{

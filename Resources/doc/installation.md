@@ -7,7 +7,7 @@ Require the bundle in your composer.json file:
 ```
 {
     "require": {
-        "chadyred/fpdf-fpdi-symfony2": "dev-master",
+        "chadyred/easy-pdf-bundle": "dev-master",
     }
 }
 ```

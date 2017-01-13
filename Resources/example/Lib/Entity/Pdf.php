@@ -2,9 +2,9 @@
 
 namespace Acme\DemoBundle\Lib\Entity;
 
-use Kark\EasyPdfBundle\Lib\Draw\PDF_Draw;
-use Kark\EasyPdfBundle\Lib\Cellfit\FPDF_CellFit;
-use Kark\EasyPdfBundle\Lib\Barecode\PDF_Code128;
+use Kark\EasyPdfBundle\Lib\Draw\PdfDraw;
+use Kark\EasyPdfBundle\Lib\Cellfit\FpdfCellfit;
+use Kark\EasyPdfBundle\Lib\Barecode\PdfCode128;
 
 class Pdf extends \FPDI
 {
@@ -48,7 +48,7 @@ class Pdf extends \FPDI
 		$style = array('width' => 0.75, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'phase' => 10, 'color' => array(0, 0, 0));
 
 		//PdfDraw enrichie avec la pattern Decorator mon PDF
-		$draw = new PDF_Draw($pdf=$this);
+		$draw = new PdfDraw($pdf=$this);
 
 		$draw->Line(11.3, 69.8, 13, 72.5, $style);
 		$draw->Line(13, 72.5, 15, 68.5, $style);
@@ -60,7 +60,7 @@ class Pdf extends \FPDI
 	{
 		// Helvetica 12
 		$this->SetFont('Helvetica',"",10);
-		$cellfit = new FPDF_CellFit($pdf=$this);
+		$cellfit = new FpdfCellfit($pdf=$this);
 
 		//Sinon seul la première ligne existe
 		$this->SetXY(90.3, 120);
@@ -75,7 +75,7 @@ class Pdf extends \FPDI
 
 		$this->SetFont('Arial','',10);
 
-		$barecode = new PDF_Code128($pdf=$this);
+		$barecode = new PdfCode128($pdf=$this);
 
 		$barecode->Code128(90,5,$code,110,20);
 		$this->SetXY(90,30);
