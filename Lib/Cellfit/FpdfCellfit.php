@@ -4,7 +4,7 @@ namespace Kark\EasyPdfBundle\Lib\Cellfit;
 
 use Kark\EasyPdfBundle\Lib\DecoratorPdf;
 
-class FPDF_CellFit extends DecoratorPdf {
+class FpdfCellfit extends DecoratorPdf {
 
 	//Cell with horizontal scaling if text is too wide
 	function CellFit($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='', $scale=false, $force=true)

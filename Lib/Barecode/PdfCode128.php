@@ -39,7 +39,7 @@ namespace Kark\EasyPdfBundle\Lib\Barecode;
 
 use Kark\EasyPdfBundle\Lib\DecoratorPdf;
 
-class PDF_Code128 extends DecoratorPdf {
+class PdfCode128 extends DecoratorPdf {
 
     protected $T128;                                         // Tableau des codes 128
     protected $ABCset = "";                                  // jeu des caractères éligibles au C128

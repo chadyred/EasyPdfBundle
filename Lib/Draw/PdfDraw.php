@@ -8,7 +8,7 @@ namespace Kark\EasyPdfBundle\Lib\Draw;
 
 use Kark\EasyPdfBundle\Lib\DecoratorPdf;
 
-class PDF_Draw extends DecoratorPdf {
+class PdfDraw extends DecoratorPdf {
 	// Sets line style
 	// Parameters:
 	// - style: Line style. Array with keys among the following:
@@ -464,14 +464,14 @@ class PDF_Draw extends DecoratorPdf {
 	// Sets a draw point
 	// Parameters:
 	// - x, y: Point
-	private function _Point($x, $y) {
+	public function _Point($x, $y) {
 		$this->pdf->_out(sprintf('%.2F %.2F m', $x * $this->pdf->k, ($this->pdf->h - $y) * $this->pdf->k));
 	}
 
 	// Draws a line from last draw point
 	// Parameters:
 	// - x, y: End point
-	private function _Line($x, $y) {
+	public function _Line($x, $y) {
 		$this->pdf->_out(sprintf('%.2F %.2F l', $x * $this->pdf->k, ($this->pdf->h - $y) * $this->pdf->k));
 	}
 
@@ -480,7 +480,7 @@ class PDF_Draw extends DecoratorPdf {
 	// - x1, y1: Control point 1
 	// - x2, y2: Control point 2
 	// - x3, y3: End point
-	private function _Curve($x1, $y1, $x2, $y2, $x3, $y3) {
+	public function _Curve($x1, $y1, $x2, $y2, $x3, $y3) {
 		$this->pdf->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c', $x1 * $this->pdf->k, ($this->pdf->h - $y1) * $this->pdf->k, $x2 * $this->pdf->k, ($this->pdf->h - $y2) * $this->pdf->k, $x3 * $this->pdf->k, ($this->pdf->h - $y3) * $this->pdf->k));
 	}
 
