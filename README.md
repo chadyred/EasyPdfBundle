@@ -37,4 +37,5 @@ FPDI transforms a PDF page into the same structure that is used by FPDF_TPL. The
 
 - Made a service to inject easily the pdf instance;
 - Show an exemple made by dependencies injection;
-- Add visual example.
+- Add visual example;
+- Better integration with test (Atoum...)
